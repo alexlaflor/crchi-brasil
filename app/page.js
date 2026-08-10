@@ -48,8 +48,8 @@ export default function Home() {
             <Reveal>
               <span className="eyebrow">Quem somos</span>
               <h2 className="h2">Construído para o subsolo brasileiro.</h2>
-            </Reveal>
-            <Reveal>
+            </>
+            <>
               <p>
                 A CRCHI Brasil fornece máquinas pesadas para o trabalho que não pode parar: escavação
                 de túneis, mineração, ferrovias e grandes obras de infraestrutura. Cada equipamento
@@ -90,7 +90,7 @@ export default function Home() {
           </Reveal>
           <div className="prod-grid">
             {PRODUCTS.map((p) => (
-              <Reveal as={Link} href={`/produtos/${p.slug}`} className="card" key={p.slug}>
+              <Reveal as="a" href={`/produtos/${p.slug}`} className="card" key={p.slug}>
                 <span className="idx">{p.idx}</span>
                 <Glyph name={p.glyph} />
                 <h3>{p.title}</h3>
