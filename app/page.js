@@ -6,14 +6,17 @@ import Reveal from './components/Reveal';
 import Glyph from './components/Glyph';
 import { PRODUCTS, PILLARS, STATS } from '@/lib/content';
 
+// next/image e next/link recebem o basePath automaticamente; tags <video>/<source>
+// cruas não, então prefixamos manualmente para o GitHub Pages.
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export default function Home() {
   return (
     <>
       {/* HERO */}
       <section className="hero">
-        {/* Substitua por /videos/hero.mp4 quando tiver o vídeo original */}
-        <video autoPlay muted loop playsInline poster="/images/home/hero-poster.jpg">
-          <source src="/videos/hero.mp4" type="video/mp4" />
+        <video autoPlay muted loop playsInline poster={`${BASE}/images/home/hero-poster.jpg`}>
+          <source src={`${BASE}/videos/hero.mp4`} type="video/mp4" />
         </video>
         <div className="hero-grid" />
         <Cutterhead />
@@ -48,8 +51,8 @@ export default function Home() {
             <Reveal>
               <span className="eyebrow">Quem somos</span>
               <h2 className="h2">Construído para o subsolo brasileiro.</h2>
-            </>
-            <>
+            </Reveal>
+            <Reveal>
               <p>
                 A CRCHI Brasil fornece máquinas pesadas para o trabalho que não pode parar: escavação
                 de túneis, mineração, ferrovias e grandes obras de infraestrutura. Cada equipamento
