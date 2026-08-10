@@ -1,11 +1,16 @@
+/**
+ * Configurado para exportação estática (GitHub Pages).
+ * output:'export' gera a pasta ./out que a Action publica.
+ */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    // Local assets under /public are optimized automatically.
-    // When you add remote images (CDN), whitelist domains here:
-    // remotePatterns: [{ protocol: 'https', hostname: 'cdn.crchi.com.br' }],
-    formats: ['image/avif', 'image/webp'],
-  },
+  output: 'export',
+  trailingSlash: true,
+  images: { unoptimized: true },
+  basePath: basePath || undefined,
+  assetPrefix: basePath || undefined,
 };
 
 export default nextConfig;
