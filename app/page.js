@@ -19,7 +19,6 @@ export default function Home() {
           <source src={`${BASE}/videos/hero.mp4`} type="video/mp4" />
         </video>
         <div className="hero-grid" />
-        <Cutterhead />
         <div className="wrap hero-inner">
           <span className="eyebrow">Confiança global · Entrega local</span>
           <h1 className="head">
