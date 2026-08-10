@@ -26,7 +26,7 @@ export default function Header() {
       <div className="wrap">
         <nav>
           <Link href="/" className="brand" aria-label="CRCHI Brasil — início">
-            <Image src="/images/logo.png" alt="CRCHI Brasil" width={150} height={32} priority style={{ width: 'auto', height: '32px' }} />
+            <Image src="/public/images/logo.png" alt="CRCHI Brasil" width={150} height={32} priority style={{ width: 'auto', height: '32px' }} />
           </Link>
           <div className={`navlinks${open ? ' open' : ''}`}>
             {NAV.map((n) => (
