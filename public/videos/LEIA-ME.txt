@@ -1,0 +1,2 @@
+Coloque aqui o vídeo do hero como "hero.mp4" (H.264, ~1080p, mudo, em loop).
+Enquanto o arquivo não existir, o site mostra o pôster em /images/home/hero-poster.jpg.
