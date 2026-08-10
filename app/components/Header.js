@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NAV } from '@/lib/content';
-import Image from 'next/image';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function Header() {
   const [solid, setSolid] = useState(false);
@@ -26,7 +26,7 @@ export default function Header() {
       <div className="wrap">
         <nav>
           <Link href="/" className="brand" aria-label="CRCHI Brasil — início">
-            <Image src="/public/images/logo.png" alt="CRCHI Brasil" width={150} height={32} priority style={{ width: 'auto', height: '32px' }} />
+            <img src={`${BASE}/images/logo.png`} alt="CRCHI Brasil" style={{ height: '32px', width: 'auto' }} />
           </Link>
           <div className={`navlinks${open ? ' open' : ''}`}>
             {NAV.map((n) => (
