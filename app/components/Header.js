@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NAV } from '@/lib/content';
+import Image from 'next/image';
 
 export default function Header() {
   const [solid, setSolid] = useState(false);
@@ -25,7 +26,7 @@ export default function Header() {
       <div className="wrap">
         <nav>
           <Link href="/" className="brand" aria-label="CRCHI Brasil — início">
-            <span className="mark" />CRCHI <small>BRASIL</small>
+            <Image src="/images/logo.png" alt="CRCHI Brasil" width={150} height={32} priority style={{ width: 'auto', height: '32px' }} />
           </Link>
           <div className={`navlinks${open ? ' open' : ''}`}>
             {NAV.map((n) => (
