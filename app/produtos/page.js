@@ -16,7 +16,7 @@ export default function Produtos() {
   return (
     <>
 <section className="phero has-bg">
-        <img className="phero-bg" src={`${BASE}/images/hero-empresa.jpg`} alt="" />
+        <img className="phero-bg" src={`${BASE}/images/hero-produtos.jpg`} alt="" />
         <div className="wrap">
           <div className="crumb"><Link href="/">Início</Link> / Produtos</div>
           <h1>A tecnologia por trás<br />de cada obra.</h1>
