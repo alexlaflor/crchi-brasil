@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Reveal from './Reveal';
 import Glyph from './Glyph';
 import { PRODUCTS } from '@/lib/content';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function ProductDetail({ slug }) {
   const p = PRODUCTS.find((x) => x.slug === slug);
