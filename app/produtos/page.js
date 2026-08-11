@@ -4,6 +4,7 @@ import Reveal from '../components/Reveal';
 import Glyph from '../components/Glyph';
 import Marquee from '../components/Marquee';
 import { PRODUCTS } from '@/lib/content';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const metadata = {
   title: 'Produtos',
@@ -14,7 +15,8 @@ export const metadata = {
 export default function Produtos() {
   return (
     <>
-      <section className="phero">
+<section className="phero has-bg">
+        <img className="phero-bg" src={`${BASE}/images/hero-empresa.jpg`} alt="" />
         <div className="wrap">
           <div className="crumb"><Link href="/">Início</Link> / Produtos</div>
           <h1>A tecnologia por trás<br />de cada obra.</h1>
