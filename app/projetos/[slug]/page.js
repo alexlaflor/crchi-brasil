@@ -4,7 +4,6 @@ import { CASES, CASE_CATEGORIES, CASE_REGIONS } from '@/lib/cases';
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-// Gera uma página estática para cada projeto (necessário para output: 'export')
 export function generateStaticParams() {
   return CASES.map((c) => ({ slug: c.slug }));
 }
@@ -22,6 +21,17 @@ export default function CaseDetail({ params }) {
   const catLabel = CASE_CATEGORIES.find((x) => x.key === c.category)?.label || c.category;
   const regLabel = CASE_REGIONS.find((x) => x.key === c.region)?.label || c.region;
   const others = CASES.filter((x) => x.slug !== c.slug).slice(0, 3);
+
+  // Ficha: usa c.facts se existir; senão, monta a ficha padrão.
+  const facts =
+    c.facts && c.facts.length
+      ? c.facts
+      : [
+          ['Categoria', catLabel],
+          ['Região', regLabel],
+          ['Local', c.location],
+          ['Situação', '[a confirmar]'],
+        ];
 
   return (
     <>
@@ -50,21 +60,53 @@ export default function CaseDetail({ params }) {
             <div>
               <span className="eyebrow">Sobre o projeto</span>
               <h2 className="h2" style={{ color: '#fff' }}>Detalhes do projeto.</h2>
-              <p style={{ color: '#c9c6be' }}>
-                Espaço reservado para a descrição completa do projeto: escopo, desafio geológico,
-                equipamento empregado, resultados e prazos. Preencha com as informações oficiais
-                quando disponíveis.
-              </p>
+              {c.description && c.description.length ? (
+                c.description.map((par, i) => (
+                  <p key={i} style={{ color: '#c9c6be', marginBottom: '1rem' }}>{par}</p>
+                ))
+              ) : (
+                <p style={{ color: '#c9c6be' }}>
+                  Espaço reservado para a descrição completa do projeto: escopo, desafio geológico,
+                  equipamento empregado, resultados e prazos. Preencha com as informações oficiais
+                  quando disponíveis.
+                </p>
+              )}
+
+              {c.highlights && c.highlights.length ? (
+                <ul className="case-highlights">
+                  {c.highlights.map((h, i) => (
+                    <li key={i}>{h}</li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
+
             <dl className="specs">
-              <div className="spec"><dt>Categoria</dt><dd>{catLabel}</dd></div>
-              <div className="spec"><dt>Região</dt><dd>{regLabel}</dd></div>
-              <div className="spec"><dt>Local</dt><dd>{c.location}</dd></div>
-              <div className="spec"><dt>Situação</dt><dd>[a confirmar]</dd></div>
+              {facts.map(([k, v], i) => (
+                <div className="spec" key={i}>
+                  <dt>{k}</dt>
+                  <dd>{v}</dd>
+                </div>
+              ))}
             </dl>
           </div>
         </div>
       </section>
+
+      {c.gallery && c.gallery.length ? (
+        <section className="dark2" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <span className="eyebrow">Galeria</span>
+            <div className="gallery">
+              {c.gallery.map((src, i) => (
+                <div className="gitem" key={i}>
+                  <img src={`${BASE}${src}`} alt={`${c.title} — foto ${i + 1}`} loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="dark2">
         <div className="wrap">
