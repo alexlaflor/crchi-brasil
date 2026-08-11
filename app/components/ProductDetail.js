@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import Reveal from './Reveal';
 import Glyph from './Glyph';
 import { PRODUCTS } from '@/lib/content';
+
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function ProductDetail({ slug }) {
@@ -25,7 +25,7 @@ export default function ProductDetail({ slug }) {
       <section className="dark2 section-tight">
         <div className="wrap">
           <Reveal className="media" style={{ aspectRatio: '21/9' }}>
-            <img src={`${BASE}${o.image}`} alt={o.title} />
+            <img src={`${BASE}${p.hero}`} alt={p.title} />
             <span className="tag">SUBSTITUIR · FOTO/VÍDEO ORIGINAL</span>
           </Reveal>
         </div>
