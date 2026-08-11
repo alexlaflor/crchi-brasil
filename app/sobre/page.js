@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '../components/Reveal';
 import { STATS } from '@/lib/content';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const metadata = {
   title: 'Empresa',
@@ -19,7 +20,8 @@ const VALUES = [
 export default function Sobre() {
   return (
     <>
-      <section className="phero">
+<section className="phero has-bg">
+        <img className="phero-bg" src={`${BASE}/images/hero-empresa.jpg`} alt="" />
         <div className="wrap">
           <div className="crumb"><Link href="/">Início</Link> / Empresa</div>
           <h1>Fabricante global.<br />Equipe brasileira.</h1>
