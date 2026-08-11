@@ -257,3 +257,17 @@ footer.site{background:var(--ink);border-top:1px solid var(--line-d);padding:4.5
 .cert h3{font-size:1.4rem;color:#fff;margin:.8rem 0 .6rem}
 .cert p{color:#b3b0a8;font-size:.93rem;margin-bottom:1rem}
 .cert .cnum{font-family:"IBM Plex Mono";font-size:.8rem;color:var(--steel-300)}
+
+
+/* ===== Página Projetos: filtros ===== */
+.filters{display:flex;flex-direction:column;gap:1.4rem;margin-bottom:2rem}
+.filter-row{display:flex;gap:1rem;align-items:baseline;flex-wrap:wrap}
+.filter-label{font-family:"IBM Plex Mono";font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300);min-width:80px}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap}
+.chip{background:transparent;border:1px solid var(--line-d);color:#cfccc4;font-family:inherit;font-size:.86rem;padding:.5rem 1rem;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:rgba(216,38,47,.5);color:#fff}
+.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+.filter-count{color:var(--steel-300);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.6rem}
+.empty{color:var(--steel-300);padding:2rem 0}
+.case .loc{color:var(--steel-300);font-size:.85rem;font-family:"IBM Plex Mono";margin-top:.3rem}
+
