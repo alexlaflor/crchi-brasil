@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '../components/Reveal';
 import { CASES, STATS } from '@/lib/content';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const metadata = {
   title: 'Projetos',
@@ -12,7 +13,8 @@ export const metadata = {
 export default function Projetos() {
   return (
     <>
-      <section className="phero">
+<section className="phero has-bg">
+        <img className="phero-bg" src={`${BASE}/images/hero-projetos.jpg`} alt="" />
         <div className="wrap">
           <div className="crumb"><Link href="/">Início</Link> / Projetos</div>
           <h1>Obras que não<br />param de avançar.</h1>
