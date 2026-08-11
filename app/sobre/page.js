@@ -28,7 +28,6 @@ const TIMELINE = [
   ['2018', '1.000ª TBM entregue', 'Marco que consolida a CRCHI entre os maiores fabricantes de tuneladoras do mundo em volume de máquinas.'],
   ['2023', 'Maior perfuratriz de poços do mundo', 'Lançamento de uma perfuratriz vertical de poços de 23,02 m de diâmetro, recorde mundial de escala na época.'],
   ['2024', 'Uma das maiores TBMs do mundo', 'Tuneladora de 16,64 m de diâmetro entra em operação; equipamentos CRCHI passam a atender projetos em mais de 30 países.'],
-  ['[ano]', 'CRCHI Brasil estabelecida', 'Constituição da filial brasileira para levar o portfólio de tunelamento, mineração e ferrovias da CRCHI ao mercado nacional.'],
 ];
 
 const TECH_STATS = [
