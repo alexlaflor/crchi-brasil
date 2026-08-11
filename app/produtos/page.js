@@ -36,7 +36,7 @@ export default function Produtos() {
               style={{ marginBottom: i < PRODUCTS.length - 1 ? 'clamp(3rem,7vw,6rem)' : 0 }}
             >
               <Link href={`/produtos/${p.slug}`} className="media" style={{ order: i % 2 ? 2 : 1 }}>
-                <Image src={p.image} alt={p.title} width={1200} height={900} />
+                <img src={`${BASE}${p.image}`} alt={p.title} />
                 <span className="tag">SUBSTITUIR · FOTO ORIGINAL</span>
               </Link>
               <div style={{ order: i % 2 ? 1 : 2 }}>
