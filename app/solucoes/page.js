@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Reveal from '../components/Reveal';
 import Marquee from '../components/Marquee';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const metadata = {
   title: 'Soluções',
@@ -27,7 +28,8 @@ const STEPS = [
 export default function Solucoes() {
   return (
     <>
-      <section className="phero">
+<section className="phero has-bg">
+        <img className="phero-bg" src={`${BASE}/images/hero-solucoes.jpg`} alt="" />
         <div className="wrap">
           <div className="crumb"><Link href="/">Início</Link> / Soluções</div>
           <h1>Uma solução para<br />cada frente de obra.</h1>
