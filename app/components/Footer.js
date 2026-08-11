@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { NAV, CONTACT, OFFICES } from '@/lib/content';
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
         <div className="foot-grid">
           <div className="foot-brand">
             <Link href="/" className="brand">
-              <span className="mark" />CRCHI <small>BRASIL</small>
+              <img src={`${BASE}/images/logo.png`} alt="CRCHI Brasil" style={{ height: '32px', width: 'auto' }} />
             </Link>
             <p>Máquinas pesadas para tunelamento, mineração e infraestrutura. Fabricante global, equipe local.</p>
           </div>
