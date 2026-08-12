@@ -78,7 +78,7 @@ export default function ProductDetail({ slug }) {
           <Reveal><span className="eyebrow">Outros produtos</span></Reveal>
           <div className="prod-grid">
             {others.map((o) => (
-              <Reveal as="a" href={`/produtos/${o.slug}`} className="card" key={o.slug}>
+              <Reveal as="a" href={`${BASE}/produtos/${o.slug}/`} className="card" key={o.slug}>
                 <span className="idx">{o.idx}</span>
                 <Glyph name={o.glyph} />
                 <h3>{o.title}</h3>
