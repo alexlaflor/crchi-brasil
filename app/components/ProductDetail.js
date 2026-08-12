@@ -12,7 +12,8 @@ export default function ProductDetail({ slug }) {
 
   return (
     <>
-      <section className="phero">
+      <section className="phero has-bg">
+        <img className="phero-bg" src={`${BASE}${p.hero}`} alt="" />
         <div className="wrap">
           <div className="crumb">
             <Link href="/">Início</Link> / <Link href="/produtos">Produtos</Link> / {p.title}
@@ -22,16 +23,7 @@ export default function ProductDetail({ slug }) {
         </div>
       </section>
 
-      <section className="dark2 section-tight">
-        <div className="wrap">
-          <Reveal className="media" style={{ aspectRatio: '21/9' }}>
-            <img src={`${BASE}${p.hero}`} alt={p.title} />
-            <span className="tag"></span>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="dark2" style={{ paddingTop: 0 }}>
+      <section className="dark2">
         <div className="wrap">
           <div className="split top">
             <Reveal>
