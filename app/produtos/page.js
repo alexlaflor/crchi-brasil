@@ -37,7 +37,7 @@ export default function Produtos() {
             >
               <Link href={`/produtos/${p.slug}`} className="media" style={{ order: i % 2 ? 2 : 1 }}>
                 <img src={`${BASE}${p.image}`} alt={p.title} />
-                <span className="tag">SUBSTITUIR · FOTO ORIGINAL</span>
+                <span className="tag">SUBSTITUIR · FOTO ORIGINALo</span>
               </Link>
               <div style={{ order: i % 2 ? 1 : 2 }}>
                 <span className="eyebrow">{p.idx} · Produto</span>
