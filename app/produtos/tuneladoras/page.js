@@ -1,120 +1,113 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { TBM_MODELS, TBM_FAMILIES } from '@/lib/tbm';
+import Reveal from '../../components/Reveal';
+import Glyph from '../../components/Glyph';
+import TbmFilter from '../../components/TbmFilter';
+import { PRODUCTS } from '@/lib/content';
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-// Gera uma página estática para cada equipamento (necessário para output: 'export')
-export function generateStaticParams() {
-  return TBM_MODELS.map((m) => ({ modelo: m.slug }));
-}
+export const metadata = {
+  title: 'Tuneladoras (TBM)',
+  description:
+    'Tuneladoras EPB, slurry, rocha dura, multimodo, de seção especial e de poços da CRCHI para metrô, ferrovia, água e utilidades.',
+};
 
-export function generateMetadata({ params }) {
-  const m = TBM_MODELS.find((x) => x.slug === params.modelo);
-  if (!m) return { title: 'Equipamento' };
-  return { title: m.title, description: m.summary };
-}
-
-export default function TbmModel({ params }) {
-  const m = TBM_MODELS.find((x) => x.slug === params.modelo);
-  if (!m) notFound();
-
-  const famLabel = TBM_FAMILIES.find((x) => x.key === m.family)?.label || m.family;
-  const others = TBM_MODELS.filter((x) => x.slug !== m.slug && x.family === m.family).slice(0, 3);
-
-  // Ficha: usa m.specs se existir; senão, ficha básica.
-  const specs =
-    m.specs && m.specs.length
-      ? m.specs
-      : [
-          ['Linha de produto', famLabel],
-          ['Categoria', 'Tuneladoras (TBM)'],
-          ['Situação', '[a confirmar]'],
-        ];
+export default function Tuneladoras() {
+  const p = PRODUCTS.find((x) => x.slug === 'tuneladoras');
+  const others = PRODUCTS.filter((x) => x.slug !== 'tuneladoras');
 
   return (
     <>
-      <section className="phero">
+      <section className="phero has-bg">
+        <img className="phero-bg" src={`${BASE}${p.hero}`} alt="" />
         <div className="wrap">
           <div className="crumb">
-            <Link href="/">Início</Link> / <Link href="/produtos">Produtos</Link> /{' '}
-            <Link href="/produtos/tuneladoras">Tuneladoras</Link> / {m.title}
+            <Link href="/">Início</Link> / <Link href="/produtos">Produtos</Link> / {p.title}
           </div>
-          <h1>{m.title}</h1>
-          <p>{m.summary}</p>
+          <h1>{p.title}</h1>
+          <p>{p.intro}</p>
         </div>
       </section>
 
-      <section className="dark2 section-tight">
+      <section className="dark2">
         <div className="wrap">
-          <div className="media" style={{ aspectRatio: '21/9' }}>
-            <img src={`${BASE}${m.image}`} alt={m.title} />
-            <span className="tag">SUBSTITUIR · FOTO ORIGINAL</span>
+          <div className="split top">
+            <Reveal>
+              <span className="eyebrow">Ficha técnica</span>
+              <h2 className="h2" style={{ color: '#fff' }}>Especificações principais.</h2>
+              <p style={{ color: '#c9c6be' }}>
+                Valores de referência do portfólio. A configuração final é definida em conjunto,
+                a partir da geologia e do traçado do seu projeto.
+              </p>
+            </Reveal>
+            <Reveal>
+              <dl className="specs">
+                {p.specs.map(([k, v]) => (
+                  <div className="spec" key={k}>
+                    <dt>{k}</dt>
+                    <dd>{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="concrete">
+        <div className="wrap">
+          <Reveal>
+            <span className="eyebrow">Destaques</span>
+            <h2 className="h2">Por que essa linha.</h2>
+          </Reveal>
+          <Reveal className="grid-1px cols-3" style={{ marginTop: '2.5rem' }}>
+            {p.features.map(([t, d]) => (
+              <div className="pill" key={t}>
+                <h3 style={{ fontSize: '1.3rem' }}>{t}</h3>
+                <p>{d}</p>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="dark2">
+        <div className="wrap">
+          <Reveal>
+            <span className="eyebrow">Linha de produtos</span>
+            <h2 className="h2" style={{ color: '#fff' }}>Equipamentos de tunelamento.</h2>
+            <p style={{ color: '#c9c6be', maxWidth: '60ch' }}>
+              Configurações para cada tipo de frente e geologia. Filtre pela linha de produto.
+            </p>
+          </Reveal>
+          <div style={{ marginTop: '2.5rem' }}>
+            <TbmFilter />
           </div>
         </div>
       </section>
 
       <section className="dark2" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <div className="split top">
-            <div>
-              <span className="eyebrow">Sobre o equipamento</span>
-              <h2 className="h2" style={{ color: '#fff' }}>Detalhes.</h2>
-              {m.description && m.description.length ? (
-                m.description.map((par, i) => (
-                  <p key={i} style={{ color: '#c9c6be', marginBottom: '1rem' }}>{par}</p>
-                ))
-              ) : (
-                <p style={{ color: '#c9c6be' }}>
-                  Espaço reservado para a descrição completa do equipamento: aplicação, faixa de
-                  diâmetro, tipo de frente, diferenciais técnicos e projetos de referência. Preencha
-                  com as informações oficiais quando disponíveis.
-                </p>
-              )}
-            </div>
-            <dl className="specs">
-              {specs.map(([k, v], i) => (
-                <div className="spec" key={i}>
-                  <dt>{k}</dt>
-                  <dd>{v}</dd>
-                </div>
-              ))}
-            </dl>
+          <Reveal><span className="eyebrow">Outros produtos</span></Reveal>
+          <div className="prod-grid">
+            {others.map((o) => (
+              <Reveal as="a" href={`${BASE}/produtos/${o.slug}/`} className="card" key={o.slug}>
+                <span className="idx">{o.idx}</span>
+                <Glyph name={o.glyph} />
+                <h3>{o.title}</h3>
+                <p>{o.short}</p>
+                <span className="go">Saiba mais <span className="arw">→</span></span>
+              </Reveal>
+            ))}
           </div>
-        </div>
-      </section>
-
-      {others.length ? (
-        <section className="dark2">
-          <div className="wrap">
-            <span className="eyebrow">Mais em {famLabel}</span>
-            <div className="case-grid" style={{ marginTop: '2rem' }}>
-              {others.map((o) => (
-                <Link href={`/produtos/tuneladoras/${o.slug}/`} className="case" key={o.slug}>
-                  <div className="ph"><img src={`${BASE}${o.image}`} alt={o.title} loading="lazy" /></div>
-                  <div className="body">
-                    <span className="k">{famLabel}</span>
-                    <h3>{o.title}</h3>
-                    <p className="loc">{o.summary}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="dark2" style={{ paddingTop: others.length ? 0 : undefined }}>
-        <div className="wrap">
-          <Link href="/produtos/tuneladoras" className="btn ghost">← Voltar para Tuneladoras</Link>
         </div>
       </section>
 
       <section className="cta">
         <div className="wrap">
-          <span className="eyebrow center">{m.title}</span>
-          <h2 style={{ marginTop: '1.2rem' }}>Peça uma<br />especificação.</h2>
-          <p>Envie os dados do projeto e retornamos com a configuração recomendada.</p>
+          <span className="eyebrow center">{p.title}</span>
+          <h2 style={{ marginTop: '1.2rem' }}>Vamos especificar<br />a sua máquina.</h2>
+          <p>Envie os dados do projeto e retornamos com uma recomendação técnica.</p>
           <Link href="/contato" className="btn">Fale com um engenheiro <span className="arw">→</span></Link>
         </div>
       </section>
