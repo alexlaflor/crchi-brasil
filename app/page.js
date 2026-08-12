@@ -92,7 +92,7 @@ export default function Home() {
           </Reveal>
           <div className="prod-grid">
             {PRODUCTS.map((p) => (
-              <Reveal as="a" href={`/produtos/${p.slug}`} className="card" key={p.slug}>
+              <Reveal as="a" href={`${BASE}/produtos/${p.slug}/`} className="card" key={p.slug}>
                 <span className="idx">{p.idx}</span>
                 <Glyph name={p.glyph} />
                 <h3>{p.title}</h3>
