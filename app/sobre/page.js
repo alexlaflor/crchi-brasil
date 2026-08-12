@@ -64,7 +64,7 @@ export default function Sobre() {
         <div className="wrap">
           <div className="split">
             <Reveal className="media">
-              <Image src="/images/home/about.jpg" alt="Fábrica e tuneladora CRCHI" width={1400} height={1000} />
+              <img className="phero-bg" src={`${BASE}/images/home/about.jpg`} alt="Fábrica e tuneladora CRCHI" width={1400} height={1000} />
               <span className="tag">SUBSTITUIR · FOTO ORIGINAL</span>
             </Reveal>
             <Reveal>
