@@ -26,7 +26,7 @@ export default function ProductDetail({ slug }) {
         <div className="wrap">
           <Reveal className="media" style={{ aspectRatio: '21/9' }}>
             <img src={`${BASE}${p.hero}`} alt={p.title} />
-            <span className="tag">SUBSTITUIR · FOTO/VÍDEO ORIGINAL</span>
+            <span className="tag">SUBSTITUIR · FOTO/VÍDEO ORIGINALl</span>
           </Reveal>
         </div>
       </section>
