@@ -54,22 +54,7 @@ export default function Tuneladoras() {
         </div>
       </section>
 
-      <section className="concrete">
-        <div className="wrap">
-          <Reveal>
-            <span className="eyebrow">Destaques</span>
-            <h2 className="h2">Por que essa linha.</h2>
-          </Reveal>
-          <Reveal className="grid-1px cols-3" style={{ marginTop: '2.5rem' }}>
-            {p.features.map(([t, d]) => (
-              <div className="pill" key={t}>
-                <h3 style={{ fontSize: '1.3rem' }}>{t}</h3>
-                <p>{d}</p>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
+
 
       <section className="dark2">
         <div className="wrap">
