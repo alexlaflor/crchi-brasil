@@ -281,3 +281,12 @@ footer.site{background:var(--ink);border-top:1px solid var(--line-d);padding:4.5
 .gitem{aspect-ratio:4/3;overflow:hidden;background:var(--steel-800);border:1px solid var(--line-d)}
 .gitem img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .gitem:hover img{transform:scale(1.05)}
+
+/* ===== Rodapé: 3/4 logo+texto, 1/4 redes sociais ===== */
+footer.site .foot-grid{grid-template-columns:3fr 1fr;gap:3rem;align-items:start}
+.foot-logo{height:64px;width:auto;margin-bottom:1.2rem}
+footer.site .foot-brand p{max-width:52ch;font-size:1rem}
+@media(max-width:640px){
+  footer.site .foot-grid{grid-template-columns:1fr;gap:2rem}
+  .foot-logo{height:52px}
+}
